@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+.vox_setup_done
+.env
+.DS_Store
