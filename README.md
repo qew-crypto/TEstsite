@@ -1,40 +1,46 @@
-# VOX Messenger Landing
+# VOX Messenger website
 
-Структура без папок — можно сразу заливать в корень GitHub репозитория.
+Готовый Flask-сайт для `voxMessenger.lol`.
 
-## Файлы
-
-- `app.py` — сайт Flask, весь HTML и CSS внутри одного файла
-- `run.py` — умный запускатор: первый запуск подготавливает, второй запускает сайт
-- `requirements.txt` — зависимости
-- `start.sh` — быстрый запуск
-- `.gitignore` — чтобы не заливать venv и служебные файлы
-
-## Запуск
+## Установка на VPS
 
 ```bash
-python3 run.py
+git clone ССЫЛКА_НА_ТВОЙ_РЕПО
+cd НАЗВАНИЕ_ПАПКИ
+sudo chmod +x install.sh
+sudo ./install.sh
 ```
 
-Первый запуск создаст `venv`, установит зависимости и покажет, что изменилось.
+После установки сайт будет сам запускаться после перезагрузки VPS.
 
-Потом запусти ещё раз:
+## DNS домена
+
+В панели домена поставь:
+
+```txt
+A     @      IP_ТВОЕГО_VPS
+A     www    IP_ТВОЕГО_VPS
+```
+
+## Если домен другой
 
 ```bash
-python3 run.py
+sudo ./install.sh example.com
 ```
 
-Сайт будет доступен на:
-
-```text
-http://IP_ТВОЕГО_VPS:5000
-```
-
-## VPS
-
-Если не установлен venv:
+## Команды
 
 ```bash
-sudo apt update
-sudo apt install python3-venv python3-pip -y
+sudo systemctl status voxmessenger
+sudo systemctl restart voxmessenger
+sudo systemctl stop voxmessenger
+```
+
+## HTTPS
+
+Когда DNS уже обновился:
+
+```bash
+sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d voxMessenger.lol -d www.voxMessenger.lol
 ```
