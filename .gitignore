@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .vox_setup_done
 .env
+local.properties
+.gradle/
+build/
+app/build/
